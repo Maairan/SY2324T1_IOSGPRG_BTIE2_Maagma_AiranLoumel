@@ -5,7 +5,8 @@ using UnityEngine;
 public class PlayerShooting : Weapon
 { 
     private Camera _cam;
-
+    [SerializeField] FixedJoystick _shootingJoystick;
+    
     void Start()
     {
         _cam = Camera.main;
@@ -13,12 +14,10 @@ public class PlayerShooting : Weapon
     }
 
     void Update()
-    {
-        if(Input.GetMouseButtonDown(0))
-            Fire();
-        
-        Vector2 lookDirection = _cam.ScreenToWorldPoint(Input.mousePosition) - this.transform.position;
-        float angle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg - 90.0f;
-        this.GetComponent<Rigidbody>().rotation = Quaternion.Euler(new Vector3(0, 0, angle));
+    {   
+        float angle = Mathf.Atan2(_shootingJoystick.Horizontal, _shootingJoystick.Vertical) * Mathf.Rad2Deg;
+
+        if (angle >= 0.1f || angle <= -0.1f)
+            transform.eulerAngles = new Vector3(0f, 0f, -angle);
     }
 }

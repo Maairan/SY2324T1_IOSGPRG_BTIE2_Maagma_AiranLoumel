@@ -30,7 +30,7 @@ public class Weapon : MonoBehaviour
         bullet.GetComponent<BulletMovement>().InitBullet(_owner, 10);
         Destroy(bullet.gameObject, _weaponRange);
         _ammo--;
-        _ammoCountText.text = "Ammo: " + _ammo;
+        _ammoCountText.text = _ammo.ToString();
     }
 
     public void Reload()

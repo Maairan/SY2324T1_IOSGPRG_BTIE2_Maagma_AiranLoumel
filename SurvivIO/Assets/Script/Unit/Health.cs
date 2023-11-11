@@ -8,7 +8,7 @@ public class Health : MonoBehaviour
 {
     public float _currentHealth { get; private set;}
     public float _maxHealth { get; private set;}
-    public bool isAlive { get { return _currentHealth > 0; } }
+    public bool isAlive { get { return _currentHealth > 0;} }
     public void InitHealth(float health)
     {
         _maxHealth = health;

@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerMovement : Unit
 {
     private Rigidbody _rigidbody;
+    [SerializeField] private FixedJoystick _movementJoystick;
 
     //Movement Stats
     private float _moveSpeed = 10.0f;
@@ -12,21 +13,19 @@ public class PlayerMovement : Unit
 
     protected override void Start()
     {
-        base.Start();
-        Debug.Log("hello player");
         _rigidbody = GetComponent<Rigidbody>();
     }
 
     void Update()
     {
-        //Camera.main.transform.position = new Vector3(this.transform.position.x, this.transform.position.y, -10);
-        _direction.x = Input.GetAxis("Horizontal");
-        _direction.y = Input.GetAxis("Vertical");
+        _direction.x = _movementJoystick.Horizontal * _moveSpeed;
+        _direction.y = _movementJoystick.Vertical * _moveSpeed;
     }
 
     void FixedUpdate()
     {
-        _rigidbody.MovePosition(_rigidbody.position + _direction.normalized * _moveSpeed * Time.deltaTime);
+        if (_direction.magnitude >= 0.1f)
+            _rigidbody.MovePosition(_rigidbody.position + _direction.normalized * _moveSpeed * Time.deltaTime);
     }
 
 }
