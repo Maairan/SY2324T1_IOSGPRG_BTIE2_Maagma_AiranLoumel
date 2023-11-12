@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShotgunWeapon : Weapon
+public class ShotgunAmmo : Pickup
 {
-    protected override void OnTriggerEnter(Collider collider)
+    public override void Start()
     {
+        _value = 5;
+        _ammoType = "12gauge";
         _weaponName = WeaponName.Shotgun;
     }
 }

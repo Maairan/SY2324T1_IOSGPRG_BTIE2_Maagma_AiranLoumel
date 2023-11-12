@@ -20,6 +20,9 @@ public class PlayerMovement : Unit
     {
         _direction.x = _movementJoystick.Horizontal * _moveSpeed;
         _direction.y = _movementJoystick.Vertical * _moveSpeed;
+        Camera.main.transform.position = new Vector3(this.transform.position.x, 
+                                                     this.transform.position.y, 
+                                                    -10);
     }
 
     void FixedUpdate()

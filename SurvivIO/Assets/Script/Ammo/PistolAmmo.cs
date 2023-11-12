@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PistolWeapon : Weapon
+public class PistolAmmo : Pickup
 {
-    protected override void OnTriggerEnter(Collider collider)
-    {
-        _weaponName = WeaponName.Pistol;
-    }
 
+    public override void Start()
+    {
+        _value = 10;
+        _weaponName = WeaponName.Pistol;
+        _ammoType = "9mm";
+    }
 }

@@ -26,5 +26,10 @@ public class BulletMovement : MonoBehaviour
             collider.GetComponent<Unit>().TakeDamage(_damage);
             Destroy(this.gameObject);
         }
+
+        if (collider.gameObject.CompareTag("Obstacle"))
+        {
+            Destroy(this.gameObject);
+        }
     }
 }
