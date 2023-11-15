@@ -4,6 +4,8 @@ using UnityEngine;
 using System;
 
 [RequireComponent(typeof(Health))]
+[RequireComponent(typeof(WeaponShoot))]
+
 public class Unit : MonoBehaviour
 {
     protected Health health;
@@ -11,7 +13,8 @@ public class Unit : MonoBehaviour
 
     protected virtual void Start()
     {
-        
+        health = this.GetComponent<Health>();
+        health.InitHealth(100);
     }
 
     
@@ -36,5 +39,6 @@ public class Unit : MonoBehaviour
     public void OnDied()
     {
         Died?.Invoke(this.gameObject);
+        Destroy(this.gameObject);
     }
 }

@@ -4,33 +4,35 @@ using UnityEngine;
 
 public class ObjectSpawner : MonoBehaviour
 {
-    [SerializeField] GameObject[] _pickupPrefab;
-    [SerializeField] GameObject[] _obstaclePrefabs;
+    [SerializeField] GameObject[] _weaponPickups, _ammoPickups, _obstaclePrefabs;
+    int _numOfObjectsToSpawn; 
 
     private void Start()
     {
-        while(_numOfSpawnedObj < _numOfObjToSpawn)
+        _numOfObjectsToSpawn = 20;
+        for(int i = 0; i < _numOfObjectsToSpawn; i++)
         {
-            SpawnObjects(_pickupPrefab);
-            //SpawnObjects(_obstaclePrefabs);
+            int objToSpawn = Random.Range(0, 101);
+
+            if(objToSpawn <= 70)
+            {
+                SpawnObjects(_ammoPickups);
+                Debug.Log("Spawned ammo");
+            }
+            else
+            {
+                SpawnObjects(_weaponPickups);
+                Debug.Log("Spawned weapon");
+            }
         }
     }
-
-    Vector2 prevPos, newPos;
-    int _numOfSpawnedObj, _numOfObjToSpawn = 20; 
 
     void SpawnObjects(GameObject[] prefabs)
     {
         Vector2 randomPos = new Vector2(Random.Range(-20, 20),
                                         Random.Range(-20, 20));
-        newPos = randomPos;
 
-        if (Vector2.Distance(newPos, prevPos) > 10)
-        {
-            int randomValue = Random.Range(0, prefabs.Length);            
-            GameObject pickup = Instantiate(prefabs[randomValue], newPos, Quaternion.identity);
-            prevPos = newPos;
-            _numOfSpawnedObj++;
-        }
+        int randomValue = Random.Range(0, prefabs.Length);            
+        GameObject pickup = Instantiate(prefabs[randomValue], randomPos, prefabs[randomValue].transform.rotation);
     }
 }

@@ -14,6 +14,7 @@ public class PlayerMovement : Unit
     protected override void Start()
     {
         _rigidbody = GetComponent<Rigidbody>();
+        base.Start();
     }
 
     void Update()

@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4edb9e84620d9f94c93e6780906d08c7, type: 3}
+  m_Name: Rifle
+  m_EditorClassIdentifier: 
+  _prefab: {fileID: 7064028628059224397, guid: 998713ec46da8b14eae85154a37121ca, type: 3}
+  _damage: 15
+  _name: Rifle
+  _fireRate: 0.35
+  _reloadTime: 2.3
+  _type: Primary
+  _ammoType: 556mm
+  _currentAmmo: 30
+  _reservedAmmo: 60
+  _magazineSize: 30
+  _maxCapacity: 120
