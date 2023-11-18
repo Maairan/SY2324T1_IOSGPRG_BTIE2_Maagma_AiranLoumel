@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1e432b6e5cb2e8429eebc892575f4e5, type: 3}
   m_Name: 12gauge
   m_EditorClassIdentifier: 
-  _prefab: {fileID: 0}
-  _ammoType: 12gauge
+  _prefab: {fileID: 5864221218535930324, guid: 79ff047d0ebad22498f952e71da75092, type: 3}
+  _name: 12gauge
   _minReplenish: 1
   _maxReplenish: 2

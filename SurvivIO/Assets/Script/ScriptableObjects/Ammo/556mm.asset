@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1e432b6e5cb2e8429eebc892575f4e5, type: 3}
   m_Name: 556mm
   m_EditorClassIdentifier: 
-  _prefab: {fileID: 0}
-  _ammoType: 556mm
+  _prefab: {fileID: 5953005145588115163, guid: 7585aac0f7f31574ca3999fd3c184e72, type: 3}
+  _name: 556mm
   _minReplenish: 5
   _maxReplenish: 15

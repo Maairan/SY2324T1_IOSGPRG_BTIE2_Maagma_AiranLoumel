@@ -30,7 +30,7 @@ Transform:
   m_Children:
   - {fileID: 469832403}
   m_Father: {fileID: 3472381768546332312}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
 --- !u!1 &469832402
 GameObject:
@@ -44,7 +44,7 @@ GameObject:
   m_Layer: 0
   m_Name: Nozzle
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -56,13 +56,71 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 469832402}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.548, y: 0.938, z: 0}
+  m_LocalPosition: {x: 0.71, y: 1.18, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 56703502}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2661337938727134565
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5694948558669936470}
+  - component: {fileID: 3377454338852248224}
+  - component: {fileID: 3155967753694241691}
+  m_Layer: 0
+  m_Name: AttackRadius
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5694948558669936470
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2661337938727134565}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3472381768546332312}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &3377454338852248224
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2661337938727134565}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 5
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &3155967753694241691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2661337938727134565}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a06dfe005faa7f43b61b818ab2110d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3472381768546332316
 GameObject:
   m_ObjectHideFlags: 0
@@ -78,7 +136,8 @@ GameObject:
   - component: {fileID: 3472381768546332311}
   - component: {fileID: 506136445379634529}
   - component: {fileID: 1820234408}
-  - component: {fileID: 6612538533804343453}
+  - component: {fileID: -2497543437002783336}
+  - component: {fileID: 5807300554528140539}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -99,6 +158,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5410607436049037944}
+  - {fileID: 5694948558669936470}
   - {fileID: 56703502}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -164,8 +224,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1.1858995, y: 1.1445882, z: 1}
+  m_Center: {x: -0.010327697, y: 0.010327697, z: 0}
 --- !u!114 &3472381768546332311
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -190,6 +250,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fe1301e048c7f44aadc4fb5239f0691, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _medkit: 0
+  _isHealing: 0
 --- !u!114 &1820234408
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -205,7 +267,23 @@ MonoBehaviour:
   _currentState: 0
   _previousState: 0
   _weaponHandler: {fileID: 0}
---- !u!114 &6612538533804343453
+--- !u!54 &-2497543437002783336
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3472381768546332316}
+  serializedVersion: 2
+  m_Mass: 0.0000001
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 2
+--- !u!114 &5807300554528140539
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -214,36 +292,28 @@ MonoBehaviour:
   m_GameObject: {fileID: 3472381768546332316}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a4340fe0950c1b34aa87a44dcaef8e32, type: 3}
+  m_Script: {fileID: 11500000, guid: dd52805663caec34992f20e2ba0a2479, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _weaponModels:
+  - {fileID: 1075050651974498930, guid: 3d5f33101977fd14ba88db40e5b3c20c, type: 3}
+  - {fileID: 3200086413410908295, guid: cf1236115226cc241a24e63325e8efa6, type: 3}
+  - {fileID: 7064028628059224397, guid: 998713ec46da8b14eae85154a37121ca, type: 3}
   _weapons:
   - {fileID: 11400000, guid: 5b6e874bbfb75d84bae89028c67221f2, type: 2}
   - {fileID: 11400000, guid: d329a12fdb988b946b0ea060c4b27e6b, type: 2}
   - {fileID: 11400000, guid: 341542ebaa56518499b1140b1d85679f, type: 2}
-  _primaryWeapon: {fileID: 0}
-  _secondaryWeapon: {fileID: 0}
   _equippedWeapon: {fileID: 0}
-  _ammo:
-  - {fileID: 11400000, guid: 39f486d7199f64047a307ea74be31c66, type: 2}
-  - {fileID: 11400000, guid: 3f77b630e2da6c64683f2fecb336bdd2, type: 2}
-  - {fileID: 11400000, guid: 2ffa608e7f110cd4ebc40171209afc25, type: 2}
   _canFire: 1
-  _isHeld: 0
   _isReloading: 0
+  _bulletPrefab:
+  - {fileID: 8210933548152080816, guid: eb3e521d49ad49e44b8373315f5f38af, type: 3}
+  - {fileID: 8210933548152080816, guid: 4b6dc9009aaccb945b328447c04b976c, type: 3}
+  - {fileID: 8210933548152080816, guid: 22996cd7649841042898efd0a6a99371, type: 3}
   _nozzle: {fileID: 469832403}
-  _weaponSlot: {fileID: 56703502}
-  _bulletPrefab: {fileID: 8210933548152080816, guid: 4b6dc9009aaccb945b328447c04b976c, type: 3}
-  _weaponPrefabs:
-  - {fileID: 1075050651974498930, guid: 3d5f33101977fd14ba88db40e5b3c20c, type: 3}
-  - {fileID: 3200086413410908295, guid: cf1236115226cc241a24e63325e8efa6, type: 3}
-  - {fileID: 7064028628059224397, guid: 998713ec46da8b14eae85154a37121ca, type: 3}
-  _activeWeapon: {fileID: 0}
-  _weaponName: {fileID: 0}
-  _magazineAmmo: {fileID: 0}
-  _reserved9mm: {fileID: 0}
-  _reserved556mm: {fileID: 0}
-  _reserved12gauge: {fileID: 0}
+  _weapon: {fileID: 56703502}
+  _currentAmmo: 0
+  _muzzleFlash: {fileID: 2773854378165881243, guid: 635be0ee456976d47ad4fed72acc8740, type: 3}
 --- !u!1 &6674282973174066000
 GameObject:
   m_ObjectHideFlags: 0

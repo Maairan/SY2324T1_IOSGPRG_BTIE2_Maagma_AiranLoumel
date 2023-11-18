@@ -23,3 +23,5 @@ MonoBehaviour:
   _reservedAmmo: 45
   _magazineSize: 15
   _maxCapacity: 90
+  _index: 0
+  _range: 1

@@ -5,32 +5,37 @@ using System;
 
 public class EnemySpawner : MonoBehaviour
 {
-    [SerializeField] GameObject _enemyPrefab;
-    [SerializeField] List<Enemy>  _enemyList = new List<Enemy>();
+    [SerializeField] private GameObject _enemyPrefab;
+    [SerializeField] private List<Enemy>  _enemyList = new List<Enemy>();
+    [SerializeField] private Transform[] _spawnPoints;
 
     private void Start()
     {
-        for (int i = 0; i < 5; i++)
-        {
-            SpawnEnemy();
-        }
+        for (int i = 0; i < 20; i++)
+            SpawnEnemy(i);
     }
 
-    void SpawnEnemy()
+    private void SpawnEnemy(int number)
     {
-        Vector2 randomPos = new Vector2(UnityEngine.Random.Range(-20, 20),
-                                        UnityEngine.Random.Range(-20, 20));
-        GameObject enemy = (GameObject) Instantiate(_enemyPrefab, randomPos, Quaternion.identity);
+        GameObject enemy = (GameObject) Instantiate(_enemyPrefab, _spawnPoints[number]);
+        enemy.name = "Enemy " + number;
 
         _enemyList.Add(enemy.GetComponent<Enemy>());
         enemy.GetComponent<Enemy>().Died += RemoveEnemy;
+        ScoreTracker.instance.UpdateEnemiesLeft(_enemyList.Count);
     }
 
-    void RemoveEnemy(GameObject obj)
+    private void RemoveEnemy(GameObject obj)
     {
         _enemyList.Remove(obj.GetComponent<Enemy>());
         obj.GetComponent<Enemy>().Died -= RemoveEnemy;
         Destroy(obj);
+        ScoreTracker.instance.UpdateEnemiesLeft(_enemyList.Count);
+        if (_enemyList.Count == 0)
+        {
+            GameManager.instance.player._isWinner = true;
+            StartCoroutine(UIHandler.instance.GoToEndMenu());
+        }
     }
-
+    
 }

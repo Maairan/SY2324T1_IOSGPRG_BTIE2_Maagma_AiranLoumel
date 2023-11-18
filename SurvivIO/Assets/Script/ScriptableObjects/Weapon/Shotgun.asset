@@ -19,7 +19,9 @@ MonoBehaviour:
   _reloadTime: 2.7
   _type: Primary
   _ammoType: 12gauge
-  _currentAmmo: 2
+  _currentAmmo: 0
   _reservedAmmo: 30
   _magazineSize: 2
   _maxCapacity: 60
+  _index: 1
+  _range: 0.5

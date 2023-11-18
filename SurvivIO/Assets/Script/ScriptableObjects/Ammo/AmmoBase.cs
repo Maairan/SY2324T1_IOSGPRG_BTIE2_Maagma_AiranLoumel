@@ -6,7 +6,7 @@ using UnityEngine;
 public class AmmoBase : ScriptableObject
 {
     public GameObject _prefab;
-    public string _ammoType;
+    public string _name;
     public int _minReplenish;
     public int _maxReplenish;
 }

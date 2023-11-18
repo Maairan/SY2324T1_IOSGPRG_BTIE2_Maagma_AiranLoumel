@@ -4,7 +4,6 @@ using UnityEngine;
 using System;
 
 [RequireComponent(typeof(Health))]
-[RequireComponent(typeof(WeaponShoot))]
 
 public class Unit : MonoBehaviour
 {
@@ -17,12 +16,7 @@ public class Unit : MonoBehaviour
         health.InitHealth(100);
     }
 
-    
-    void Update()
-    {
-        
-    }
-    public void TakeDamage(float damage)
+    public virtual void TakeDamage(float damage)
     {
         if (!health.isAlive)
             return;
@@ -39,6 +33,5 @@ public class Unit : MonoBehaviour
     public void OnDied()
     {
         Died?.Invoke(this.gameObject);
-        Destroy(this.gameObject);
     }
 }

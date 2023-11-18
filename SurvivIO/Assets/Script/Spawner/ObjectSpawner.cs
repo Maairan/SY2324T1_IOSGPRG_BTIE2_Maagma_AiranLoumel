@@ -4,33 +4,33 @@ using UnityEngine;
 
 public class ObjectSpawner : MonoBehaviour
 {
-    [SerializeField] GameObject[] _weaponPickups, _ammoPickups, _obstaclePrefabs;
-    int _numOfObjectsToSpawn; 
+    [SerializeField] private GameObject[] _weaponPickups, _ammoPickups, _obstaclePrefabs, _healthPickup;
+
+    private int _numOfObjectsToSpawn; 
 
     private void Start()
     {
-        _numOfObjectsToSpawn = 20;
+        _numOfObjectsToSpawn = 100;
         for(int i = 0; i < _numOfObjectsToSpawn; i++)
         {
             int objToSpawn = Random.Range(0, 101);
+            
+            if(objToSpawn <= 10) // 10%
+                SpawnObjects(_healthPickup);
 
-            if(objToSpawn <= 70)
-            {
+            else if (objToSpawn > 10 && objToSpawn <= 75) // 65%
                 SpawnObjects(_ammoPickups);
-                Debug.Log("Spawned ammo");
-            }
+
             else
-            {
-                SpawnObjects(_weaponPickups);
-                Debug.Log("Spawned weapon");
-            }
+                SpawnObjects(_weaponPickups); // 25%
+
         }
     }
 
-    void SpawnObjects(GameObject[] prefabs)
+    private void SpawnObjects(GameObject[] prefabs)
     {
-        Vector2 randomPos = new Vector2(Random.Range(-20, 20),
-                                        Random.Range(-20, 20));
+        Vector2 randomPos = new Vector2(Random.Range(-90, 90),
+                                        Random.Range(-40, 40));
 
         int randomValue = Random.Range(0, prefabs.Length);            
         GameObject pickup = Instantiate(prefabs[randomValue], randomPos, prefabs[randomValue].transform.rotation);

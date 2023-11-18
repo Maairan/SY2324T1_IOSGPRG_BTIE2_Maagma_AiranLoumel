@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1e432b6e5cb2e8429eebc892575f4e5, type: 3}
   m_Name: 9mm
   m_EditorClassIdentifier: 
-  _prefab: {fileID: 1233748073323461975, guid: f53c19674ea32ab49b43df6487c2c0a3, type: 3}
-  _ammoType: 9mm
+  _prefab: {fileID: 8841573220943654699, guid: 32d41c5abcbbd774588ad89ee7afde23, type: 3}
+  _name: 9mm
   _minReplenish: 1
   _maxReplenish: 8

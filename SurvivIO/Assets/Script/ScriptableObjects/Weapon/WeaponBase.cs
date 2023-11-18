@@ -16,4 +16,6 @@ public class WeaponBase : ScriptableObject
     public int _reservedAmmo;
     public int _magazineSize;
     public int _maxCapacity;
+    public int _index;
+    public float _range;
 }

@@ -16,7 +16,7 @@ public class BulletMovement : MonoBehaviour
         this._bulletSpread = bulletSpread;
     }
 
-    void Update()
+    private void Update()
     {
         this.transform.Translate(new Vector3(_bulletSpread, _moveSpeed, 0.0f) * Time.deltaTime);
     }
@@ -26,12 +26,21 @@ public class BulletMovement : MonoBehaviour
         if (collider.GetComponent<Unit>() && collider.gameObject != _shooter)
         {
             collider.GetComponent<Unit>().TakeDamage(_damage);
+                if(collider.GetComponent<Health>()._currentHealth <= 0)
+                    ScoreTracker.instance.StartCoroutine(ScoreTracker.instance.UpdateKillFeed(_shooter.name, collider.name));
+                
             Destroy(this.gameObject);
         }
-
+    
         if (collider.gameObject.CompareTag("Obstacle"))
-        {
             Destroy(this.gameObject);
-        }
+        
+    }
+
+    private IEnumerator stopTime()
+    {
+        Time.timeScale = 0;
+        yield return new WaitForSeconds(0.1f);
+        Time.timeScale = 1;
     }
 }
